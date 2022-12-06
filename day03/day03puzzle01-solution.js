@@ -44,25 +44,26 @@ function appearsInBoth(rucksack) {
 	const partB = rucksack.slice(rucksack.length/2);
 	console.log(rucksack)
 	console.log(partA, partB);
+	const inBothSet = new Set();
 
 	for(let i = 0; i < partA.length; i++) {
 		let item = partA[i];
 		// console.log(`item: ${item} priority: ${getPriority(item)}`);
-		if (partB.includes(item)) {
-			console.log(`item: ${item} priority: ${getPriority(item)}`);
+		if (partB.includes(item) && !inBothSet.has(item)) {
+			inBothSet.add(item);
+			console.log(`item: ${item} priority: ${getPriority(item)} counter: ${priorityCounter}`);
 			addItemToList(item)
 		}
 	}
 }
 
 
-input.forEach(rucksack =>{
+input.forEach(rucksack => {
 	appearsInBoth(rucksack);
 });
 console.log(itemPriorities)
 
 console.log(priorityCounter);
-
 
 
 const sumItemPriorities = Object
